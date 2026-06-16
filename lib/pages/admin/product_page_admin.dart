@@ -2,36 +2,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:resto_app/models/product_model.dart';
-import 'package:resto_app/pages/user/product_detail_page.dart';
+import 'package:resto_app/pages/admin/add_product_page.dart';
+import 'package:resto_app/pages/admin/edit_product_card.dart';
 import 'package:resto_app/widgets/product_card_user.dart';
 
-class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+class ProductPageAdmin extends StatelessWidget {
+  const ProductPageAdmin({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final currency = NumberFormat.currency(
       locale: 'id_ID',
       symbol: 'Rp ',
       decimalDigits: 0,
     );
-
     return Scaffold(
       backgroundColor: Colors.grey[100],
 
-      appBar: AppBar(
-        title: const Text("Products"),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text("Products"), centerTitle: true),
 
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection("products")
-            .snapshots(),
+        stream: FirebaseFirestore.instance.collection('products').snapshots(),
 
         builder: (context, snapshot) {
-
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
@@ -40,33 +33,28 @@ class ProductPage extends StatelessWidget {
             return const Center(child: Text("Belum ada produk"));
           }
 
-          final products = snapshot.data!.docs.map((doc) {
-            return ProductModel.fromMap(
-              doc.id,
-              doc.data() as Map<String, dynamic>,
-            );
-          }).toList();
+          final products = snapshot.data!.docs;
 
           return ListView.builder(
             padding: const EdgeInsets.all(16),
             itemCount: products.length,
-
             itemBuilder: (context, index) {
+              final doc = products[index];
 
-              final product = products[index];
+              final product = ProductModel.fromMap(
+                doc.id,
+                doc.data() as Map<String, dynamic>,
+              );
 
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => ProductDetailPage(
-                        product: product,
-                      ),
+                      builder: (_) => EditProductPage(product: product),
                     ),
                   );
                 },
-
                 child: ProductCardUser(
                   name: product.name,
                   price: currency.format(product.price),
@@ -77,6 +65,15 @@ class ProductPage extends StatelessWidget {
             },
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AddProductPage()),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -43,3 +43,21 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase Credentials and Configurations
+
+# Android Firebase configuration
+android/app/google-services.json
+
+# iOS Firebase configuration
+ios/Runner/GoogleService-Info.plist
+
+# Firebase CLI config / Web configuration (jika ada)
+.firebase/
+firebase.json
+firestore.rules
+firestore.indexes.json
+storage.rules
+
+# FlutterFire CLI generated configuration (Sangat Penting jika pake flutterfire configure)
+lib/firebase_options.dart

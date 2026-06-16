@@ -4,14 +4,14 @@ import 'package:intl/intl.dart';
 import 'package:resto_app/models/product_model.dart';
 import 'package:resto_app/widgets/product_card.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageAdmin extends StatefulWidget {
+  const HomePageAdmin({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageAdmin> createState() => _HomePageAdminState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageAdminState extends State<HomePageAdmin> {
 
   final TextEditingController searchController = TextEditingController();
 
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(height: 20),
 
-              //  SEARCH
+              // 🔎 SEARCH
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:resto_app/core/services/auth_service.dart';
 import 'package:resto_app/pages/admin/admin_page.dart';
+import 'package:resto_app/pages/admin/layouts_admin.dart';
 import 'package:resto_app/pages/auth/register_page.dart';
-// import 'package:resto_app/pages/user/layouts.dart';
-import 'package:resto_app/pages/user/user_page.dart';
+import 'package:resto_app/pages/user/layouts.dart';
+// import 'package:resto_app/pages/user/user_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -35,14 +36,14 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => const AdminPage(),
+            builder: (_) => const LayoutsScreenAdmin(),
           ),
         );
       } else {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => const UserPage(),
+            builder: (_) => const LayoutsScreen(),
           ),
         );
       }
