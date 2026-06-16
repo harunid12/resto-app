@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:resto_app/core/services/auth_service.dart';
-import 'package:resto_app/pages/admin/admin_page.dart';
 import 'package:resto_app/pages/admin/layouts_admin.dart';
 import 'package:resto_app/pages/auth/register_page.dart';
 import 'package:resto_app/pages/user/layouts.dart';

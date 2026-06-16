@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(height: 20),
 
-              // 🏷 CATEGORY FILTER
+              // CATEGORY FILTER
               SizedBox(
                 height: 50,
                 child: ListView.builder(
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(height: 10),
 
-              // 📦 FIREBASE STREAM
+              //  FIREBASE STREAM
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection("products")
@@ -175,14 +175,14 @@ class _HomePageState extends State<HomePage> {
                     );
                   }).toList();
 
-                  // 🏷 FILTER CATEGORY
+                  //  FILTER CATEGORY
                   if (selectedCategory != "All") {
                     products = products
                         .where((p) => p.category == selectedCategory)
                         .toList();
                   }
 
-                  // 🔎 FILTER SEARCH
+                  //  FILTER SEARCH
                   if (searchQuery.isNotEmpty) {
                     products = products
                         .where((p) =>

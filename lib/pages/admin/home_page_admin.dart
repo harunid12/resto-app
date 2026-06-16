@@ -73,7 +73,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
 
               const SizedBox(height: 20),
 
-              // 🔎 SEARCH
+              //  SEARCH
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
@@ -182,7 +182,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                         .toList();
                   }
 
-                  // 🔎 FILTER SEARCH
+                  //  FILTER SEARCH
                   if (searchQuery.isNotEmpty) {
                     products = products
                         .where((p) =>
